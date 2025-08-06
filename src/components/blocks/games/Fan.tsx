@@ -1,8 +1,9 @@
 'use client'
 
+import { useBackground } from '@/context/BackgroundContext'
+import MiddleCard from '@/components/ui/MiddleCard'
 import { useState, useEffect, useRef } from 'react'
 import { supabase } from '@/lib/supabase'
-import MiddleCard from '@/components/ui/MiddleCard'
 
 type FanClub = {
   id: string
@@ -11,11 +12,12 @@ type FanClub = {
   type: string[]
 }
 
-const fanTypes = ['dota', 'cs', 'football', 'basketball', 'chess']
+const fanTypes = ['football', 'basketball', 'chess', 'dota', 'cs']
 
 const Fan = () => {
   const [fan, setFan] = useState<FanClub[]>([])
   const hasFetched = useRef(false)
+  const { backgroundLogo, setBackgroundLogo } = useBackground()
 
   useEffect(() => {
     if (hasFetched.current) return
@@ -26,7 +28,6 @@ const Fan = () => {
       if (error) {
         console.error('error', error)
       } else {
-        console.log('Загруженные фанаты:', data)
         setFan(data || [])
       }
     }
@@ -37,16 +38,30 @@ const Fan = () => {
   if (!fan.length) return <div>LOADING</div>
 
   return (
-    <div className="flex flex-wrap gap-4">
+    <div className="flex flex-wrap gap-4 max-w-[70%]">
       {fanTypes.map(type => {
         const filtered = fan.filter(item => item.type.includes(type))
         if (!filtered.length) return null
 
         return (
-          <div key={type} className="flex flex-col flex-wrap gap-4">
-            {filtered.map(item => (
-              <MiddleCard key={item.id} title={item.title} image={item.logo} />
-            ))}
+          <div className="flex relative ">
+            <h2 className="bg-light rounded-md w-full text-center absolute top-0 left-1/2 -translate-x-1/2 z-30">{type}</h2>
+            <div key={type} className="flex flex-wrap gap-4 z-20 pt-10">
+              {filtered.map(item => (
+                <MiddleCard
+                  key={item.id}
+                  title={item.title}
+                  image={item.logo}
+                  onClick={() => {
+                    if (backgroundLogo === item.logo) {
+                      setBackgroundLogo(null)
+                    } else {
+                      setBackgroundLogo(item.logo)
+                    }
+                  }}
+                />
+              ))}
+            </div>
           </div>
         )
       })}

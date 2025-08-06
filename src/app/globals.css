@@ -43,9 +43,14 @@
 }
 
 body {
-  background: var(--color-dark);
   overflow-x: hidden;
   font-family: 'Poppins', sans-serif !important;
+}
+
+html,
+body {
+  min-height: 100%;
+  background-color: var(--color-dark-hover);
 }
 
 [data-nextjs-dev-overlay] {
@@ -88,7 +93,7 @@ body {
   color: var(--color-light);
 }
 
-input[type="range"]::-webkit-slider-thumb {
+input[type='range']::-webkit-slider-thumb {
   appearance: none;
   height: 16px;
   width: 16px;
