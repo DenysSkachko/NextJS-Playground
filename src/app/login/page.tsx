@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import MarqueeBackground from '@/components/MarqueeBackground'
@@ -12,7 +12,6 @@ export default function AuthPage() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
   const router = useRouter()
-
 
   const handleSubmit = async () => {
     setError(null)
@@ -29,12 +28,18 @@ export default function AuthPage() {
   }
 
   const handleGoogle = async () => {
+    const isLocalhost = typeof window !== 'undefined' && window.location.hostname === 'localhost'
+    const redirectTo = isLocalhost
+      ? 'http://localhost:3000/'
+      : 'https://proxima-playground.vercel.app/'
+
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: 'http://localhost:3000/',
+        redirectTo,
       },
     })
+
     if (error) setError(error.message)
   }
 
@@ -54,7 +59,9 @@ export default function AuthPage() {
           </button>
           <button
             className={`flex-1 p-2 rounded-r cursor-pointer ${
-              mode === 'register' ? 'bg-dark text-light hover:bg-dark-hover' : 'bg-light hover:bg-light-hover'
+              mode === 'register'
+                ? 'bg-dark text-light hover:bg-dark-hover'
+                : 'bg-light hover:bg-light-hover'
             }`}
             onClick={() => setMode('register')}
           >
@@ -62,18 +69,33 @@ export default function AuthPage() {
           </button>
         </div>
 
-        <InputAuth type="email" id={"emailInput"} label={"Email:"} value={email}
-  onChange={e => setEmail(e.target.value)}/>
+        <InputAuth
+          type="email"
+          id={'emailInput'}
+          label={'Email:'}
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+        />
 
-        <InputAuth type="password" id={"passwordInput"} label={"Password:"} value={password}
-    onChange={e => setPassword(e.target.value)}/>
-
+        <InputAuth
+          type="password"
+          id={'passwordInput'}
+          label={'Password:'}
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+        />
 
         {error && <p className="text-accent-hover text-sm mb-2">{error}</p>}
-        <button onClick={handleSubmit} className="transition-all duration-300 hover:scale-105 w-full bg-dark text-light hover:bg-dark-hover p-2 rounded mb-3 cursor-pointer">
+        <button
+          onClick={handleSubmit}
+          className="transition-all duration-300 hover:scale-105 w-full bg-dark text-light hover:bg-dark-hover p-2 rounded mb-3 cursor-pointer"
+        >
           {mode === 'login' ? 'Войти' : 'Зарегистрироваться'}
         </button>
-        <button onClick={handleGoogle} className="transition-all duration-300 hover:scale-105 w-full bg-accent text-light hover:bg-accent-hover p-2 rounded cursor-pointer">
+        <button
+          onClick={handleGoogle}
+          className="transition-all duration-300 hover:scale-105 w-full bg-accent text-light hover:bg-accent-hover p-2 rounded cursor-pointer"
+        >
           Войти через Google
         </button>
       </div>
