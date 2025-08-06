@@ -1,8 +1,38 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap');
+@import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-dark: #2b2d42;
+  --color-dark-hover: #13131b;
+  --color-alt: #8d99ae;
+  --color-light: #edf2f4;
+  --color-light-hover: #e0e2e2;
+  --color-accent: #ef233c;
+  --color-accent-hover: #d90429;
+  --font-mickey: 'MickeyMouse';
+}
+
+@font-face {
+  font-family: 'MickeyMouse';
+  src: url('/fonts/MickeyMouse.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Smooth Cheese';
+  src: url('/fonts/Cheese.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@layer utilities {
+  .font-mickey {
+    font-family: 'MickeyMouse', cursive;
+  }
+  .font-cheese {
+    font-family: 'Smooth Cheese', cursive;
+  }
 }
 
 @theme inline {
@@ -12,15 +42,71 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+body {
+  background: var(--color-dark);
+  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif !important;
+}
+
+[data-nextjs-dev-overlay] {
+  display: none !important;
+  pointer-events: none !important;
+}
+
+.test {
+  color: #e0e2e2;
+}
+
+@keyframes marqueeLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes marqueeRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.marqueeLeft {
+  animation: marqueeLeft 30s linear infinite;
+}
+
+.marqueeRight {
+  animation: marqueeRight 30s linear infinite;
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-light);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 9999px;
+  background-color: var(--color-light);
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+.Toastify__toast {
+  @apply rounded-lg shadow-lg;
+}
+
+.Toastify__toast--success {
+  @apply bg-accent text-white font-bold px-10;
+}
+
+.Toastify__toast--error {
+  @apply bg-accent-hover text-white font-bold px-10;
 }
