@@ -79,10 +79,8 @@ export default function ServicesPage() {
             </div>
           )}
           {activeTab === 'Games' && (
-            <div className="flex flex-col justify-between h-full gap-4 p-0 sm:p-6">
+            <div className="flex flex-col justify-between h-full gap-4 p-0 sm:p-6 sm:pt-0">
               <Games />
-              <Sport />
-              <Watch />
             </div>
           )}
         </motion.div>

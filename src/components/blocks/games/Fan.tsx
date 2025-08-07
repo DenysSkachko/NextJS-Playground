@@ -4,6 +4,7 @@ import { useBackground } from '@/context/BackgroundContext'
 import MiddleCard from '@/components/ui/MiddleCard'
 import { useState, useEffect, useRef } from 'react'
 import { supabase } from '@/lib/supabase'
+import SectionTitle from '@/components/ui/SectionTitle'
 
 type FanClub = {
   id: string
@@ -38,34 +39,37 @@ const Fan = () => {
   if (!fan.length) return <div>LOADING</div>
 
   return (
-    <div className="flex flex-wrap gap-4  sm:max-w-[70%]">
-      {fanTypes.map(type => {
-        const filtered = fan.filter(item => item.type.includes(type))
-        if (!filtered.length) return null
+    <>
+      <SectionTitle>Fan Sector</SectionTitle>
+      <div className="flex flex-wrap gap-4  sm:max-w-[70%]">
+        {fanTypes.map(type => {
+          const filtered = fan.filter(item => item.type.includes(type))
+          if (!filtered.length) return null
 
-        return (
-          <div key={type}>
-            <h2 className="bg-light border-1 border-dark rounded-md text-center my-4">{type}</h2>
-            <div className="flex flex-wrap gap-4 z-20 justify-center sm:justify-start">
-              {filtered.map(item => (
-                <MiddleCard
-                  key={item.id}
-                  title={item.title}
-                  image={item.logo}
-                  onClick={() => {
-                    if (backgroundLogo === item.logo) {
-                      setBackgroundLogo(null)
-                    } else {
-                      setBackgroundLogo(item.logo)
-                    }
-                  }}
-                />
-              ))}
+          return (
+            <div key={type}>
+              <h2 className="bg-light border-1 border-dark rounded-md text-center my-4">{type}</h2>
+              <div className="flex flex-wrap gap-4 z-20 justify-center sm:justify-start">
+                {filtered.map(item => (
+                  <MiddleCard
+                    key={item.id}
+                    title={item.title}
+                    image={item.logo}
+                    onClick={() => {
+                      if (backgroundLogo === item.logo) {
+                        setBackgroundLogo(null)
+                      } else {
+                        setBackgroundLogo(item.logo)
+                      }
+                    }}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
-        )
-      })}
-    </div>
+          )
+        })}
+      </div>
+    </>
   )
 }
 
