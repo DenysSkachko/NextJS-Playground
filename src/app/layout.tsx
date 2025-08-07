@@ -2,6 +2,7 @@
 import { Poppins } from 'next/font/google'
 import './globals.css'
 import type { Metadata } from 'next'
+import Preloader from '@/components/blocks/games/Preloader'
 
 export const metadata: Metadata = {
   title: 'DS Web',
@@ -21,7 +22,9 @@ const poppins = Poppins({
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={poppins.className}>
-      <body>{children}</body>
+      <body>
+        <Preloader />
+        {children}</body>
     </html>
   )
 }
