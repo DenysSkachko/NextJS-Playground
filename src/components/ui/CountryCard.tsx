@@ -11,13 +11,19 @@ type Countries = {
 
 type CountryCardProps = {
   item: Countries
+  isSelected?: boolean
+  onClick?: () => void
 }
 
-const CountryCard = React.memo(({ item }: CountryCardProps) => {
+const CountryCard = React.memo(({ item, isSelected, onClick }: CountryCardProps) => {
   return (
     <div
+      onClick={onClick}
       key={item.id}
-      className="relative w-[120px] h-[90px] px-2 pt-5 pb-2 text-center text-light/50 rounded-sm group hover:scale-105 transition-all duration-300 cursor-pointer overflow-hidden"
+      className={`relative w-[120px] h-[90px] px-2 pt-5 pb-2 text-center text-light/50 rounded-sm cursor-pointer overflow-hidden
+        hover:scale-105 transition-all duration-300
+        ${isSelected ? 'scale-110' : ''}
+      `}
     >
       <Image
         src={item.flag}

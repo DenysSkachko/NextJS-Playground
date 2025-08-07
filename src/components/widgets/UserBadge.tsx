@@ -31,7 +31,7 @@ export default function UserBadge({ email, onLogout }: Props) {
         <h1 className="font-bold text-dark">{email}</h1>
         <button
           onClick={onLogout}
-          className="absolute -top-3 -right-2 px-2 font-bold bg-accent text-white rounded hover:bg-red-700 transition cursor-pointer"
+          className="absolute -top-3 -right-2 px-2 font-bold bg-accent text-light rounded hover:bg-accent-hover transition cursor-pointer"
         >
           Log out
         </button>

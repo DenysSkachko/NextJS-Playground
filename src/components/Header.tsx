@@ -35,7 +35,7 @@ const Header = () => {
       <div className="fixed sm:absolute top-4 sm:-top-7 right-4 sm:right-0 z-50 lg:hidden">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="text-white bg-accent p-2 rounded-lg"
+          className="text-light bg-accent p-2 rounded-lg"
         >
           {isOpen ? <IoLogoXing size={40} /> : <FaBurger size={40} />}
         </button>
@@ -52,7 +52,7 @@ const Header = () => {
             className="absolute right-4 sm:right-0 -top-10 sm:-top-7 z-40 bg-accent px-6 py-4 rounded-lg lg:rounded-r-none  lg:px-10 xl:px-20 "
           >
 
-            <ul className="flex flex-col sm:pr-15 gap-4 text-white text-center sm:text-left lg:hidden">
+            <ul className="flex flex-col sm:pr-15 gap-4 text-light text-center sm:text-left lg:hidden">
               {links.map(({ href, label }) => (
                 <li key={href}>
                   <Link
@@ -70,7 +70,7 @@ const Header = () => {
               ))}
             </ul>
 
-            <ul className="hidden lg:flex gap-15 text-white">
+            <ul className="hidden lg:flex gap-15 text-light">
               {links.map(({ href, label }) => (
                 <li
                   key={href}

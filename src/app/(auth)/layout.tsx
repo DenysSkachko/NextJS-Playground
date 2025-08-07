@@ -8,6 +8,8 @@ import UserBadge from '@/components/widgets/UserBadge'
 import Logo from '@/components/Logo'
 import { BackgroundProvider } from '@/context/BackgroundContext'
 import BackgroundToggleButton from '@/components/widgets/BackgroundToggleButton'
+import { ThemeProvider } from '@/context/ThemeContext'
+import ThemeToggleButton from '@/components/widgets/ThemeToggleButton'
 
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true)
@@ -33,22 +35,27 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
   if (loading) return null
 
   return (
-    <BackgroundProvider>
-      <main className="flex min-h-screen w-screen items-center justify-center px-0 sm:px-10 pt-30 sm:pb-10">
-        <div className="relative z-10 flex h-full w-full sm:rounded-4xl bg-alt shadow-xl accent p-4 sm:p-10 pt-15 sm:pt-25 xl:h-[750px] 2xl:w-[1350px]">
-          <Header />
+    <ThemeProvider>
+      <BackgroundProvider>
+        <main className="flex min-h-screen w-screen items-center justify-center px-0 sm:px-10 pt-30 sm:pb-10">
+          <div className="relative z-10 flex h-full w-full sm:rounded-4xl bg-alt shadow-xl accent p-4 sm:p-10 pt-15 sm:pt-25 xl:h-[750px] 2xl:w-[1350px]">
+            <Header />
 
-          <div className="relative w-full rounded-xl sm:rounded-3xl bg-dark px-4 sm:px-10 py-8">
-            {children}
+            <div className="relative w-full rounded-xl sm:rounded-3xl bg-dark px-4 sm:px-10 py-8">
+              {children}
+            </div>
+
+            <UserBadge email={userEmail} onLogout={handleLogout} />
+
+            <Logo />
           </div>
 
-          <UserBadge email={userEmail} onLogout={handleLogout} />
-
-          <Logo />
-        </div>
-
-        <BackgroundToggleButton />
-      </main>
-    </BackgroundProvider>
+          <div className="fixed bottom-4 left-4/5 flex space-x-4 transform -translate-x-1/2 z-50">
+            <BackgroundToggleButton />
+            <ThemeToggleButton />
+          </div>
+        </main>
+      </BackgroundProvider>
+    </ThemeProvider>
   )
 }

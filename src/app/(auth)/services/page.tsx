@@ -9,8 +9,6 @@ import Music from '@/components/blocks/games/Music'
 import Food from '@/components/blocks/games/Food'
 import Games from '@/components/blocks/games/Games'
 import Fan from '@/components/blocks/games/Fan'
-import Sport from '@/components/blocks/games/Sport'
-import Watch from '@/components/blocks/games/Watch'
 
 export default function ServicesPage() {
   const tabs = ['Watch', 'Music', 'Country', 'Food', 'Fan', 'Games']
