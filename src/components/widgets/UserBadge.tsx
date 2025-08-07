@@ -14,8 +14,8 @@ export default function UserBadge({ email, onLogout }: Props) {
 
   useEffect(() => {
     const checkScreen = () => {
-      setIsMobile(window.innerWidth < 1280) 
-      if (window.innerWidth >= 1280) {
+      setIsMobile(window.innerWidth < 1024)
+      if (window.innerWidth >= 1024) {
         setOpen(false)
       }
     }
@@ -40,29 +40,31 @@ export default function UserBadge({ email, onLogout }: Props) {
   }
 
   return (
-    <div className="absolute left-80 -top-7 z-20">
-      <button
-        onClick={() => setOpen(!open)}
-        className="bg-light text-dark p-2 rounded-xl"
-        aria-expanded={open}
-        aria-controls="userbadge-menu"
-      >
-        <FiLogOut size={40} />
-      </button>
-
-      <div
-        id="userbadge-menu"
-        className={`mt-2 w-[220px] transition-all duration-300 rounded-xl bg-light px-4 py-3 shadow-lg overflow-hidden ${
-          open ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
-        }`}
-      >
-        <h2 className="text-dark font-semibold mb-2 break-all">{email}</h2>
+    <div className="fixed sm:absolute left-4 sm:right-17 top-4 sm:-top-7 z-20 text-right">
+      <div className="relative">
         <button
-          onClick={onLogout}
-          className="flex items-center gap-2 text-sm bg-accent text-white px-3 py-2 rounded hover:bg-red-700 transition"
+          onClick={() => setOpen(!open)}
+          className="rounded-xl bg-light p-2 text-dark"
+          aria-expanded={open}
+          aria-controls="userbadge-menu"
         >
-          <FiLogOut size={16} /> Log out
+          <FiLogOut size={40} />
         </button>
+
+        <div
+          id="userbadge-menu"
+          className={`absolute top-full mt-2 w-max max-w-[300px] overflow-hidden rounded-xl bg-light px-4 py-3 shadow-lg transition-all duration-300
+          ${open ? 'block max-h-40' : 'pointer-events-none hidden max-h-0'}
+          left-0 sm:right-0 sm:left-auto`}
+        >
+          <h2 className="mb-2 break-words text-right font-semibold text-dark">{email}</h2>
+          <button
+            onClick={onLogout}
+            className="flex items-center gap-2 rounded bg-accent px-3 py-2 text-sm text-white transition hover:bg-red-700"
+          >
+            <FiLogOut size={16} /> Log out
+          </button>
+        </div>
       </div>
     </div>
   )

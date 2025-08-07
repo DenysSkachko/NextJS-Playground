@@ -1,8 +1,9 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useMemo } from 'react'
 import { supabase } from '@/lib/supabase'
 import Image from 'next/image'
+import CountryCard from '@/components/ui/CountryCard'
 
 type Countries = {
   name: string
@@ -30,7 +31,9 @@ const Country = ({ onLoaded }: { onLoaded: () => void }) => {
       }
     }
     fetchCountry()
-  }, [])
+  }, [onLoaded])
+
+  const memoizedCountries = useMemo(() => country, [country])
 
   if (!country.length) {
     return (
@@ -40,29 +43,14 @@ const Country = ({ onLoaded }: { onLoaded: () => void }) => {
 
   return (
     <>
-<h2 className="text-2xl text-light mb-4">🎬 My Favorite Movies</h2>
-    <div className="flex flex-wrap gap-5">
-      {country.map(item => (
-        <div
-          key={item.id}
-          className="relative w-[120px] h-[90px] px-2 pt-5 pb-2 text-center text-light/50 rounded-sm group hover:scale-105 transition-all duration-300 cursor-pointer group overflow-hidden"
-        >
-          
-          <Image
-            src={item.flag}
-            alt={item.name}
-            fill
-            sizes="(max-width: 640px) 100vw, 120px"
-            className="object-cover rounded-lg z-10 pb-5"
-          />
-          <p className="text-white z-20 text-sm mt-2 absolute bottom-0 left-0 rounded-b-sm bg-dark-hover w-full px-1">
-            {item.name}
-          </p>
-        </div>
-      ))}
-    </div>
+      <h2 className="text-2xl text-light mb-4">Countries</h2>
+      <div className="flex flex-wrap gap-4 justify-center sm:justify-start">
+        {memoizedCountries.map(item => (
+          <CountryCard key={item.id} item={item} />
+        ))}
+      </div>
     </>
   )
 }
 
-export default Country
+export default React.memo(Country)

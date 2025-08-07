@@ -58,8 +58,8 @@ const Main = () => {
   }
   return (
     <>
-      <div className="flex flex-wrap gap-4 justify-center">
-        <div className="relative w-[200px] h-[200px] overflow-hidden rounded-xl">
+      <div className="flex flex-col md:flex-row  gap-4 justify-center items-center">
+        <div className=" relative w-[200px] h-[200px] overflow-hidden rounded-xl">
           <Image
             src="/avatar.png"
             alt="Моё фото"
@@ -70,7 +70,7 @@ const Main = () => {
           />
         </div>
 
-        <div className="flex flex-wrap gap-4 justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 justify-center">
           <SmallCards label="First Name" value={profile.first_name} />
           <SmallCards label="Last Name" value={profile.last_name} />
           <SmallCards label="Middle Name" value={profile.middle_name} />

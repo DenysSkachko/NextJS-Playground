@@ -13,8 +13,8 @@ const AboutPage = () => {
         exit={{ opacity: 0, y: -20, scale: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <Main />
-        <EducationSection />
+        <Main />{/* 
+        <EducationSection /> */}
       </motion.div>
     </AnimatePresence>
   )

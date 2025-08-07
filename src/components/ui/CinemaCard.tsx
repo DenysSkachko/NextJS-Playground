@@ -32,14 +32,14 @@ const CinemaCard = ({ title, posterPath, alt, size = 150 }: CinemaCardProps) => 
   }, [isPreviewOpen])
 
   return (
-    <div ref={cardRef} className="relative inline-block text-center">
+    <div ref={cardRef} className="relative inline-block text-center w-full sm:w-[160px]">
       <div
         className="relative bg-neutral-900 rounded-xl cursor-pointer"
-        style={{ width: size }}
+        
         onClick={() => setIsPreviewOpen(!isPreviewOpen)}
       >
         <div
-          style={{ width: size, height: size, position: 'relative', margin: '0 auto' }}
+          style={{ height: size, position: 'relative', margin: '0 auto' }}
           className="rounded-md overflow-hidden"
         >
           <Image

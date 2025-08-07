@@ -29,7 +29,7 @@ export default function ServicesPage() {
 
   return (
     <div className="p-4 relative min-h-[400px] h-full">
-      <div className="flex flex-col absolute -top-10 -right-10 bg-light rounded-lg py-2 z-10">
+      <div className="flex flex-col relative sm:absolute sm:-top-10 sm:-right-10 bg-light rounded-lg py-2 z-10 mb-5">
         {tabs.map(tab => (
           <button
             key={tab}
@@ -50,7 +50,7 @@ export default function ServicesPage() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: -20, scale: 0 }}
           transition={{ duration: 0.6 }}
-          className="pr-40 h-full"
+          className="sm:pr-40 w-full"
         >
           {activeTab === 'Watch' && (
             <div>

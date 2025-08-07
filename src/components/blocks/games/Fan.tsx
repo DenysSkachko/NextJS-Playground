@@ -38,15 +38,18 @@ const Fan = () => {
   if (!fan.length) return <div>LOADING</div>
 
   return (
-    <div className="flex flex-wrap gap-4 max-w-[70%]">
+    <div className="flex flex-wrap gap-4  sm:max-w-[70%]">
       {fanTypes.map(type => {
         const filtered = fan.filter(item => item.type.includes(type))
         if (!filtered.length) return null
 
         return (
-          <div className="flex relative ">
-            <h2 className="bg-light rounded-md w-full text-center absolute top-0 left-1/2 -translate-x-1/2 z-30">{type}</h2>
-            <div key={type} className="flex flex-wrap gap-4 z-20 pt-10">
+          <div className="flex relative justify-center sm:justify-start mx-auto sm:mx-0">
+            <h2 className="bg-light rounded-md w-full text-center absolute top-0 z-30">{type}</h2>
+            <div
+              key={type}
+              className="flex flex-wrap gap-4 z-20 pt-10 justify-center sm:justify-start"
+            >
               {filtered.map(item => (
                 <MiddleCard
                   key={item.id}

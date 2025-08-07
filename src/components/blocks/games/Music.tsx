@@ -51,39 +51,40 @@ export default function Music() {
   }
 
   const renderArtist = (artist: { id: number; name: string; image: string; audio: string }) => (
-    <div
-      key={artist.id}
-      className="relative bg-neutral-900 rounded-xl text-center cursor-pointer"
-      style={{ width: size }}
-      onClick={() => handleClick(artist.audio)}
-    >
+    <div key={artist.id} className="relative inline-block text-center w-full sm:w-[160px]">
       <div
-        style={{ width: size, height: size, position: 'relative', margin: '0 auto' }}
-        className="rounded-md overflow-hidden"
+        className="relative bg-neutral-900 rounded-xl text-center cursor-pointer"
+        onClick={() => handleClick(artist.audio)}
       >
-        <Image
-          src={artist.image}
-          alt={artist.name}
-          fill
-          style={{ objectFit: 'cover' }}
-          sizes={`${size}px`}
-          className="hover:scale-105 transition-transform"
-        />
-        <p className="text-white text-sm mt-2 absolute bottom-0 bg-dark-hover w-full px-1">
-          {artist.name}
-        </p>
+        <div
+          style={{ height: size, position: 'relative', margin: '0 auto' }}
+          className="rounded-md overflow-hidden"
+        >
+          <Image
+            src={artist.image}
+            alt={artist.name}
+            fill
+            style={{ objectFit: 'cover' }}
+            sizes={`${size}px`}
+            className="hover:scale-105 transition-transform"
+          />
+          <p className="text-white text-sm mt-2 absolute bottom-0 bg-dark-hover w-full px-1">
+            {artist.name}
+          </p>
+        </div>
       </div>
     </div>
   )
 
   return (
-    <div className="p-6">
+    <div className="p-0 sm:p-6">
       <h2 className="text-2xl text-white mb-4"> Любимые исполнители</h2>
       <div className="flex flex-wrap gap-4 mb-8">{topArtists.map(renderArtist)}</div>
 
       <h2 className="text-2xl text-white mb-4"> Классика</h2>
-      <div className="flex flex-wrap gap-4 mb-6">{winterArtists.map(renderArtist)}</div>
-
+      <div className="flex flex-wrap gap-4 justify-center sm:justify-start">
+        {winterArtists.map(renderArtist)}
+      </div>
       <audio ref={audioRef} className="hidden" />
 
       {isPlaying && (

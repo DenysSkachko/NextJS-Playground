@@ -42,9 +42,9 @@ const Shows = () => {
   }
 
   return (
-    <div className="p-6">
-      <h2 className="text-2xl text-light mb-4"> My Favorite TV Shows</h2>
-      <div className="flex flex-wrap gap-4">
+    <div className="p-0 sm:p-6">
+      <h2 className="text-2xl text-light mb-4 text-center"> My Favorite TV Shows</h2>
+      <div className="flex flex-wrap gap-4 justify-center sm:justify-start">
         {shows.map(show => (
           <CinemaCard key={show.id} title={show.name} posterPath={show.poster_path} />
         ))}

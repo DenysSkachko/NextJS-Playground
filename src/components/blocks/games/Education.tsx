@@ -26,7 +26,7 @@ const educationData = [
 export default function EducationSection() {
   return (
     <section className="px-4 py-12 text-light">
-      <ul className="space-y-4 max-w-md mx-auto">
+      <ul className="grid md:grid-cols-2  gap-2 max-w-md mx-auto">
         {educationData.map((item, index) => (
           <li
             key={index}
