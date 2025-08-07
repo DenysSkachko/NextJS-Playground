@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabase'
 import Image from 'next/image'
+import SectionTitle from '@/components/ui/SectionTitle'
 
 type FoodItem = {
   id: string
@@ -10,6 +11,8 @@ type FoodItem = {
   image: string
   type: string
 }
+
+const categories = ['food', 'drink', 'dessert', 'snacks', 'fruits']
 
 const Food = () => {
   const [food, setFood] = useState<FoodItem[]>([])
@@ -32,54 +35,27 @@ const Food = () => {
     )
   }
 
-  const foods = food.filter(item => item.type === 'food')
-  const drinks = food.filter(item => item.type === 'drink')
-  const desserts = food.filter(item => item.type === 'dessert')
-  const snacks = food.filter(item => item.type === 'snacks')
-  const fruits = food.filter(item => item.type === 'fruits')
-
   return (
-    <div className="flex flex-wrap gap-5">
-      {foods.length > 0 && (
-          <div className="">
-            {foods.map(item => (
-              <FoodCard key={item.id} item={item} />
-            ))}
-          </div>
-      )}
+    <>
+      <SectionTitle>Favorite Food</SectionTitle>
+      <div className="flex flex-wrap gap-4 justify-center sm:justify-start mx-auto">
+        {categories.map(category => {
+          const filtered = food.filter(item => item.type === category)
+          if (!filtered.length) return null
 
-      {desserts.length > 0 && (
-          <div >
-            {desserts.map(item => (
-              <FoodCard key={item.id} item={item} />
-            ))}
-          </div>
-      )}
-
-      {drinks.length > 0 && (
-          <div >
-            {drinks.map(item => (
-              <FoodCard key={item.id} item={item} />
-            ))}
-          </div>
-      )}
-
-      {snacks.length > 0 && (
-          <div >
-            {snacks.map(item => (
-              <FoodCard key={item.id} item={item} />
-            ))}
-          </div>
-      )}
-
-      {fruits.length > 0 && (
-          <div >
-            {fruits.map(item => (
-              <FoodCard key={item.id} item={item} />
-            ))}
-          </div>
-      )}
-    </div>
+          return (
+              <div key={category} className="flex flex-col">
+                <h2 className="w-full bg-light border-1 border-dark rounded-md text-center my-4">{category}</h2>
+                <div className="flex flex-wrap gap-4 justify-center sm:justify-start">
+                  {filtered.map(item => (
+                  <FoodCard key={item.id} item={item} />
+                ))}
+                </div>
+              </div>
+          )
+        })}
+      </div>
+    </>
   )
 }
 

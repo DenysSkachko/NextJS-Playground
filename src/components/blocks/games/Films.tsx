@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import CinemaCard from '@/components/ui/CinemaCard'
+import SectionTitle from '@/components/ui/SectionTitle'
 
 const API_KEY = '66526d5b220f8dabd4147e932c37bec3'
 
@@ -42,14 +43,14 @@ const Films = () => {
   }
 
   return (
-    <div className="p-0 sm:p-6">
-      <h2 className="text-2xl text-light mb-4 text-center"> My Favorite Movies</h2>
+    <>
+      <SectionTitle>Top 5 films</SectionTitle>
       <div className="flex flex-wrap gap-4 justify-center sm:justify-start">
         {movies.map(movie => (
           <CinemaCard key={movie.id} title={movie.title} posterPath={movie.poster_path} />
         ))}
       </div>
-    </div>
+    </>
   )
 }
 

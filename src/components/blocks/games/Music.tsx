@@ -1,7 +1,8 @@
 'use client'
 
-import Image from 'next/image'
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState } from 'react'
+import MusicCard from '@/components/ui/MusicCard'
+import SectionTitle from '@/components/ui/SectionTitle'
 
 const topArtists = [
   { id: 1, name: 'Oxxymiron', image: '/music/oxxx.webp', audio: '/music/oxxx.mp3' },
@@ -20,7 +21,7 @@ export default function Music() {
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const [currentTrack, setCurrentTrack] = useState<string | null>(null)
   const [isPlaying, setIsPlaying] = useState(false)
-  const [volume, setVolume] = useState(1) // 0..1
+  const [volume, setVolume] = useState(1)
 
   const handleClick = (audio: string) => {
     if (!audioRef.current) return
@@ -50,47 +51,40 @@ export default function Music() {
     }
   }
 
-  const renderArtist = (artist: { id: number; name: string; image: string; audio: string }) => (
-    <div key={artist.id} className="relative inline-block text-center w-full sm:w-[160px]">
-      <div
-        className="relative bg-neutral-900 rounded-xl text-center cursor-pointer"
-        onClick={() => handleClick(artist.audio)}
-      >
-        <div
-          style={{ height: size, position: 'relative', margin: '0 auto' }}
-          className="rounded-md overflow-hidden"
-        >
-          <Image
-            src={artist.image}
-            alt={artist.name}
-            fill
-            style={{ objectFit: 'cover' }}
-            sizes={`${size}px`}
-            className="hover:scale-105 transition-transform"
-          />
-          <p className="text-white text-sm mt-2 absolute bottom-0 bg-dark-hover w-full px-1">
-            {artist.name}
-          </p>
-        </div>
-      </div>
-    </div>
-  )
-
   return (
-    <div className="p-0 sm:p-6">
-      <h2 className="text-2xl text-white mb-4"> Любимые исполнители</h2>
-      <div className="flex flex-wrap gap-4 mb-8">{topArtists.map(renderArtist)}</div>
-
-      <h2 className="text-2xl text-white mb-4"> Классика</h2>
-      <div className="flex flex-wrap gap-4 justify-center sm:justify-start">
-        {winterArtists.map(renderArtist)}
+    <>
+      <SectionTitle>Favorite artists</SectionTitle>
+      <div className="flex flex-wrap gap-4 mb-8">
+        {topArtists.map((artist) => (
+          <MusicCard
+            key={artist.id}
+            title={artist.name}
+            posterPath={artist.image}
+            size={size}
+            onClick={() => handleClick(artist.audio)}
+          />
+        ))}
       </div>
+
+      <SectionTitle>Favorite singles</SectionTitle>
+      <div className="flex flex-wrap gap-4 justify-center sm:justify-start">
+        {winterArtists.map((artist) => (
+          <MusicCard
+            key={artist.id}
+            title={artist.name}
+            posterPath={artist.image}
+            size={size}
+            onClick={() => handleClick(artist.audio)}
+          />
+        ))}
+      </div>
+
       <audio ref={audioRef} className="hidden" />
 
       {isPlaying && (
-        <div className="fixed bottom-4 left-1/2  transform -translate-x-1/2 bg-dark py-2 px-10 rounded-2xl  z-50 flex items-center gap-3">
+        <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-dark py-2 px-10 rounded-2xl z-50 flex items-center gap-3">
           <svg
-            className=" w-7 h-7 text-white pointer-events-none"
+            className="w-7 h-7 text-white pointer-events-none"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
@@ -106,13 +100,12 @@ export default function Music() {
               step={0.01}
               value={volume}
               onChange={handleVolumeChange}
-              className="w-full h-2 appearance-none bg-accent rounded-full cursor-pointer transition-all duration-300 
-          focus:outline-none volume-slider"
+              className="w-full h-2 appearance-none bg-accent rounded-full cursor-pointer transition-all duration-300 focus:outline-none volume-slider"
               aria-label="Global volume control"
             />
           </label>
         </div>
       )}
-    </div>
+    </>
   )
 }

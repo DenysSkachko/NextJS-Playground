@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef, useMemo } from 'react'
 import { supabase } from '@/lib/supabase'
 import Image from 'next/image'
 import CountryCard from '@/components/ui/CountryCard'
+import SectionTitle from '@/components/ui/SectionTitle'
 
 type Countries = {
   name: string
@@ -43,7 +44,7 @@ const Country = ({ onLoaded }: { onLoaded: () => void }) => {
 
   return (
     <>
-      <h2 className="text-2xl text-light mb-4">Countries</h2>
+      <SectionTitle>Countries I have visited</SectionTitle>
       <div className="flex flex-wrap gap-4 justify-center sm:justify-start">
         {memoizedCountries.map(item => (
           <CountryCard key={item.id} item={item} />

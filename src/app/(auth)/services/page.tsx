@@ -28,7 +28,7 @@ export default function ServicesPage() {
   }
 
   return (
-    <div className="p-4 relative min-h-[400px] h-full">
+    <div className="relative min-h-[400px] h-full">
       <div className="flex flex-col relative sm:absolute sm:-top-10 sm:-right-10 bg-light rounded-lg py-2 z-10 mb-5">
         {tabs.map(tab => (
           <button
@@ -50,36 +50,36 @@ export default function ServicesPage() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: -20, scale: 0 }}
           transition={{ duration: 0.6 }}
-          className="sm:pr-40 w-full"
+          className="sm:pr-40 w-full "
         >
           {activeTab === 'Watch' && (
-            <div>
+            <div className="p-0 sm:p-6">
               <Films />
               <Shows />
             </div>
           )}
           {activeTab === 'Music' && (
-            <div>
+            <div className="p-0 sm:p-6">
               <Music />
             </div>
           )}
           {activeTab === 'Country' && (
-            <div>
+            <div className="p-0 sm:p-6">
               <Country onLoaded={handleTabLoaded} />
             </div>
           )}
           {activeTab === 'Food' && (
-            <div>
+            <div className="p-0 sm:p-6">
               <Food />
             </div>
           )}
           {activeTab === 'Fan' && (
-            <div>
+            <div className="p-0 sm:p-6">
               <Fan />
             </div>
           )}
           {activeTab === 'Games' && (
-            <div className="flex flex-col justify-between h-full gap-4">
+            <div className="flex flex-col justify-between h-full gap-4 p-0 sm:p-6">
               <Games />
               <Sport />
               <Watch />

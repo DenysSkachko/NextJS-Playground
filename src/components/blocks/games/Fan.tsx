@@ -44,12 +44,9 @@ const Fan = () => {
         if (!filtered.length) return null
 
         return (
-          <div className="flex relative justify-center sm:justify-start mx-auto sm:mx-0">
-            <h2 className="bg-light rounded-md w-full text-center absolute top-0 z-30">{type}</h2>
-            <div
-              key={type}
-              className="flex flex-wrap gap-4 z-20 pt-10 justify-center sm:justify-start"
-            >
+          <div key={type}>
+            <h2 className="bg-light border-1 border-dark rounded-md text-center my-4">{type}</h2>
+            <div className="flex flex-wrap gap-4 z-20 justify-center sm:justify-start">
               {filtered.map(item => (
                 <MiddleCard
                   key={item.id}
