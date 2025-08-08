@@ -45,7 +45,7 @@ const Food = () => {
 
           return (
               <div key={category} className="flex flex-col">
-                <h2 className="w-full bg-light border-1 border-dark rounded-md text-center my-4">{category}</h2>
+                <h2 className="w-full bg-light border-1 border-dark rounded-md text-center my-1">{category}</h2>
                 <div className="flex flex-wrap gap-4 justify-center sm:justify-start">
                   {filtered.map(item => (
                   <FoodCard key={item.id} item={item} />

@@ -5,6 +5,7 @@ import { supabase } from '@/lib/supabase'
 import Image from 'next/image'
 import SmallCards from '@/components/ui/SmallCards'
 import { IoMdMale } from 'react-icons/io'
+import SectionTitle from '@/components/ui/SectionTitle'
 
 type Profile = {
   id: number

@@ -48,7 +48,7 @@ const Fan = () => {
 
           return (
             <div key={type}>
-              <h2 className="bg-light border-1 border-dark rounded-md text-center my-4">{type}</h2>
+              <h2 className="bg-light border-1 border-dark rounded-md text-center my-1">{type}</h2>
               <div className="flex flex-wrap gap-4 z-20 justify-center sm:justify-start">
                 {filtered.map(item => (
                   <MiddleCard

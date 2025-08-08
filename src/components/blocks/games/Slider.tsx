@@ -13,14 +13,14 @@ const slides = [
     image: 'https://skillicons.dev/icons?i=github',
   },
   {
-    title: 'Resume Website',
-    description: 'Interactive resume site built with Next.js',
+    title: 'DS Webpage',
+    description: 'Interactive resume site built with React/TS',
     link: 'https://denys-skachko.vercel.app',
-    image: 'https://cdn-icons-png.flaticon.com/512/6815/6815042.png',
+    image: '/favicon.png',
   },
   {
     title: 'Telegram',
-    description: 'Contact me directly via Telegram',
+    description: 'Contact me directly Telegram',
     link: 'https://t.me/denys_skachko',
     image: 'https://cdn-icons-png.flaticon.com/512/2111/2111646.png',
   },
@@ -44,28 +44,28 @@ export default function Slider() {
   const nextSlide = () => instanceRef.current?.next()
 
   return (
-    <div className="relative max-w-xl mx-auto mt-12 select-none">
-      <div ref={sliderRef} className="keen-slider rounded-2xl overflow-hidden shadow-2xl  ">
+    <div className="relative max-w-xl mx-auto select-none">
+      <div ref={sliderRef} className="keen-slider rounded-2xl overflow-hidden shadow-2xl mt-4 ">
         {slides.map((item, i) => (
           <a
             key={i}
             href={item.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="keen-slider__slide flex flex-col items-center p-8 rounded-2xl bg-gradient-to-b from-zinc-900/90 to-zinc-900/70 shadow-lg
+            className="keen-slider__slide flex flex-col items-center p-4 rounded-2xl bg-dark-hover shadow-lg
               transition-transform duration-300 ease-in-out text-white"
           >
             <img
               src={item.image}
               alt={item.title}
-              className="w-20 h-20 mb-5 rounded-full bg-white/10 p-3 shadow-md"
+              className="w-20 h-20 mb-5 rounded-full bg-light/10 p-3 shadow-md"
               loading="lazy"
               draggable={false}
             />
             <h3 className="text-2xl font-extrabold mb-2 tracking-tight text-accent drop-shadow-md">
               {item.title}
             </h3>
-            <p className="text-center text-gray-300 max-w-xs leading-relaxed font-light">
+            <p className="text-center text-light max-w-xs leading-relaxed font-light">
               {item.description}
             </p>
           </a>

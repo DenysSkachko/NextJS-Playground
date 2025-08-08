@@ -11,7 +11,7 @@ import { IoLogoXing } from "react-icons/io5";
 const links = [
   { href: '/', label: 'home' },
   { href: '/about', label: 'about' },
-  { href: '/services', label: 'services' },
+  { href: '/favorite', label: 'favorite' },
   { href: '/contact', label: 'contact' },
 ]
 

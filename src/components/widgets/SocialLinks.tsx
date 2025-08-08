@@ -55,7 +55,7 @@ const SocialLinks = React.forwardRef((props) => {
           target="_blank"
           rel="noopener noreferrer"
           data-social-icon
-          className="text-[var(--color-light)] animate-bounce text-4xl transition-transform duration-300 hover:text-[var(--color-accent)] hover:scale-150"
+          className="text-[var(--color-light)] text-4xl transition-transform duration-300 hover:text-[var(--color-accent)] hover:scale-150"
           aria-label={`Link to ${url}`}
           variants={itemVariants}
         >
