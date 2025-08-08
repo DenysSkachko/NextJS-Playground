@@ -19,7 +19,7 @@ export default function GitCommits() {
   useEffect(() => {
     fetch("https://api.github.com/repos/DenysSkachko/NextJS-Playground/commits")
       .then(res => res.json())
-      .then(data => setCommits(data.slice(0, 5)))
+      .then(data => setCommits(data.slice(0, 6)))
       .catch(err => console.error(err))
   }, [])
 
