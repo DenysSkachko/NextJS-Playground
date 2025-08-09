@@ -34,7 +34,7 @@ const LongCard = ({ title, image, size = 150 }: LongProps) => {
       <div ref={cardRef} className="relative inline-block text-center">
         <div
           onClick={() => setIsPreviewOpen(!isPreviewOpen)}
-          className="relative w-[200px] h-[120px] px-2 pt-5 pb-2 text-center border-1 border-dark-hover bg-dark-hover rounded-md cursor-pointer overflow-hidden"
+          className="relative w-[200px] h-[120px] px-2 pt-5 pb-2 text-center  bg-dark-hover rounded-md cursor-pointer overflow-hidden"
         >
           <Image
             src={image}
@@ -43,7 +43,7 @@ const LongCard = ({ title, image, size = 150 }: LongProps) => {
             sizes="(max-width: 640px) 100vw, 120px"
             className="object-cover z-10 hover:scale-125 transition-all duration-300 pt-6"
           />
-          <p className="text-white z-20 text-md absolute top-0 left-0 bg-accent-hover w-full px-1">
+          <p className="text-white z-20 text-md absolute top-0 left-0 bg-accent w-full px-1">
             {title}
           </p>
         </div>

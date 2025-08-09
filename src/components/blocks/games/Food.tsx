@@ -38,20 +38,28 @@ const Food = () => {
   return (
     <>
       <SectionTitle>Favorite Food</SectionTitle>
-      <div className="flex flex-wrap gap-4 justify-center sm:justify-start mx-auto">
+      <div className="flex flex-wrap gap-4 mx-auto">
         {categories.map(category => {
           const filtered = food.filter(item => item.type === category)
           if (!filtered.length) return null
 
           return (
-              <div key={category} className="flex flex-col">
-                <h2 className="w-full bg-light border-1 border-dark rounded-md text-center my-1">{category}</h2>
-                <div className="flex flex-wrap gap-4 justify-center sm:justify-start">
-                  {filtered.map(item => (
+            <div key={category} className="w-full flex">
+              <h2
+                className="bg-dark text-white inline-block px-4 py-2 text-right"
+                style={{
+                  writingMode: 'vertical-rl',
+                  transform: 'rotate(180deg)',
+                }}
+              >
+                {category}
+              </h2>
+              <div className="flex flex-wrap gap-4">
+                {filtered.map(item => (
                   <FoodCard key={item.id} item={item} />
                 ))}
-                </div>
               </div>
+            </div>
           )
         })}
       </div>

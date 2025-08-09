@@ -16,17 +16,12 @@ const educationData = [
     subtitle: "Master's Degree",
     period: '2021–2023',
   },
-  {
-    title: 'Driving License',
-    subtitle: '7 years experience',
-    period: 'Since 2017',
-  },
 ]
 
 export default function EducationSection() {
   return (
     <section className="px-4 py-12 text-light">
-      <ul className="grid md:grid-cols-2  gap-2 max-w-md mx-auto">
+      <ul className="flex flex-col  gap-2 max-w-md mx-auto">
         {educationData.map((item, index) => (
           <li
             key={index}

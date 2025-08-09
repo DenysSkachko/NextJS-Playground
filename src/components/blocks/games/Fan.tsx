@@ -47,9 +47,17 @@ const Fan = () => {
           if (!filtered.length) return null
 
           return (
-            <div key={type}>
-              <h2 className="bg-light border-1 border-dark rounded-md text-center my-1">{type}</h2>
-              <div className="flex flex-wrap gap-4 z-20 justify-center sm:justify-start">
+            <div key={type} className="w-full flex">
+              <h2
+                className="bg-dark text-white inline-block px-4 py-2 text-right"
+                style={{
+                  writingMode: 'vertical-rl',
+                  transform: 'rotate(180deg)',
+                }}
+              >
+                {type}
+              </h2>
+              <div className="flex flex-wrap gap-4 z-20">
                 {filtered.map(item => (
                   <MiddleCard
                     key={item.id}

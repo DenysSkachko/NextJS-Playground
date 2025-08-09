@@ -7,6 +7,7 @@ import DotaModal from '@/components/blocks/games/dota/Dota'
 import HSModal from '@/components/blocks/games/heartstone/Heartstone'
 import MiddleAltCard from '@/components/ui/MiddleAltCard'
 import { AnimatePresence } from 'framer-motion'
+import SectionTitle from '@/components/ui/SectionTitle'
 
 type Games = {
   title: string
@@ -46,37 +47,52 @@ const Games = () => {
   }
 
   return (
-    <div className="flex flex-col gap-4 justify-center sm:justify-start">
-      {categories.map(category => {
-        const filtered = games.filter(item => item.type === category)
-        if (!filtered.length) return null
+    <>
+      <SectionTitle>Favorite Food</SectionTitle>
+      <div className="flex flex-col gap-4 justify-center sm:justify-start">
+        {categories.map(category => {
+          const filtered = games.filter(item => item.type === category)
+          if (!filtered.length) return null
 
-        return (
-          <div key={category} className="w-fit">
-            <h2 className="mb-1 bg-light border-1 border-dark rounded-md text-center">{category}</h2>
-            <div className="flex gap-4">
-              {filtered.map(game => (
-                <MiddleAltCard
-                  key={game.id}
-                  onClick={() => {
-                    setActiveGame(game.title)
+          return (
+            <div key={category} className="w-fit">
+              <div className="flex">
+                <h2
+                  className="bg-dark text-white inline-block px-4 py-2 text-right"
+                  style={{
+                    writingMode: 'vertical-rl',
+                    transform: 'rotate(180deg)',
                   }}
-                  title={game.title}
-                  image={game.image}
-                />
-              ))}
+                >
+                  {category}
+                </h2>
+                <div className="flex flex-wrap gap-4">
+                  {filtered.map(game => (
+                    <MiddleAltCard
+                      key={game.id}
+                      onClick={() => {
+                        setActiveGame(game.title)
+                      }}
+                      title={game.title}
+                      image={game.image}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
-          </div>
-        )
-      })}
+          )
+        })}
 
-      <AnimatePresence>
-        {activeGame === 'Dota2' && <DotaModal isOpen={true} onClose={() => setActiveGame(null)} />}
-        {activeGame === 'Hearthstone' && (
-          <HSModal isOpen={true} onClose={() => setActiveGame(null)} />
-        )}
-      </AnimatePresence>
-    </div>
+        <AnimatePresence>
+          {activeGame === 'Dota2' && (
+            <DotaModal isOpen={true} onClose={() => setActiveGame(null)} />
+          )}
+          {activeGame === 'Hearthstone' && (
+            <HSModal isOpen={true} onClose={() => setActiveGame(null)} />
+          )}
+        </AnimatePresence>
+      </div>
+    </>
   )
 }
 
