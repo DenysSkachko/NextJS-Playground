@@ -13,6 +13,7 @@ const links = [
   { href: '/about', label: 'about' },
   { href: '/favorite', label: 'favorite' },
   { href: '/contact', label: 'contact' },
+  { href: '/chat', label: 'CHAT (NEW)' },
 ]
 
 const Header = () => {
