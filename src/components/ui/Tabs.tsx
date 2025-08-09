@@ -19,7 +19,7 @@ export default function Tabs<T extends string>({ tabs, initialTab }: TabsProps<T
   return (
     <div className="h-full flex flex-col">
       
-      <div className="flex flex-wrap gap-2 border-b border-accent mb-6">
+      <div className="flex flex-wrap gap-2 border-b border-accent mb-6 justify-center lg:justify-start">
         {tabs.map(tab => (
           <button
             key={tab.label}

@@ -54,7 +54,7 @@ const Food = () => {
               >
                 {category}
               </h2>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-4 w-full">
                 {filtered.map(item => (
                   <FoodCard key={item.id} item={item} />
                 ))}
@@ -68,7 +68,7 @@ const Food = () => {
 }
 
 const FoodCard = ({ item }: { item: FoodItem }) => (
-  <div className="relative w-[150px] h-[100px] px-2 pt-5 pb-2 text-center text-light/50 rounded-lg group hover:scale-105 transition-all duration-300 cursor-pointer">
+  <div className="relative w-full sm:w-[150px] h-[100px] px-2 pt-5 pb-2 text-center text-light/50 rounded-lg group hover:scale-105 transition-all duration-300 cursor-pointer">
     <h3 className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-dark-hover py-[1px] px-3 whitespace-nowrap rounded-sm z-10">
       {item.title}
     </h3>

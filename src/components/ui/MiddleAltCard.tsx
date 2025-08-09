@@ -11,7 +11,7 @@ const MiddleAltCard = ({ title, image, onClick }: MiddleProps) => {
     <>
       <div
         onClick={onClick}
-        className="relative w-[140px] h-[140px] px-2 pt-5 pb-2 text-center border-1 border-dark-hover bg-dark-hover rounded-md cursor-pointer  overflow-hidden"
+        className="relative w-[120px] sm:w-[140px] h-[140px] px-2 pt-5 pb-2 text-center border-1 border-dark-hover bg-dark-hover rounded-md cursor-pointer  overflow-hidden"
       >
         <Image
           src={image}

@@ -46,9 +46,9 @@ const Device = () => {
   return (
     <>
       <div className="flex flex-col xl:flex-row gap-4">
-        <div className="flex flex-col gap-4 justify-center lg:justify-start items-center lg:items-start mx-auto">
+        <div className="flex flex-col gap-4 justify-center lg:justify-start items-center lg:items-start mx-auto w-full xl:w-auto">
           <h2 className="bg-light text-dark text-4xl w-full">My actual devices</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
             {device.map(item => (
               <LongCard key={item.id} title={item.title} image={item.image} />
             ))}

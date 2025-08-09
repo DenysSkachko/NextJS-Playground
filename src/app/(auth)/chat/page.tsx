@@ -219,7 +219,7 @@ export default function Chat() {
                 <div ref={messagesEndRef} />
               </div>
 
-              <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row gap-2">
                 <input type="text" className="flex-1 border outline-none bg-light-hover rounded px-2 py-1" value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => { if (e.key === 'Enter') sendMessage() }} placeholder="Введите сообщение..." />
                 <button onClick={sendMessage} className="bg-accent text-white px-4 rounded hover:bg-accent-hover disabled:opacity-50 cursor-pointer" disabled={input.trim() === ''}>Send</button>
               </div>
