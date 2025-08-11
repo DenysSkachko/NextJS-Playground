@@ -68,7 +68,7 @@ export default function ContactPage() {
         </div>
 
         <Link
-          href="/about"
+          href="/game"
           className="absolute w-full h-[10%] bottom-0 left-0 bg-accent-hover/50 pointer-events-auto"
         >
           <span className=""></span>
