@@ -20,6 +20,8 @@ const Country = ({ onLoaded }: { onLoaded: () => void }) => {
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const hasFetched = useRef(false)
 
+  const { setThemeName } = useTheme()
+
   useEffect(() => {
     if (hasFetched.current) return
     hasFetched.current = true
@@ -55,8 +57,6 @@ const Country = ({ onLoaded }: { onLoaded: () => void }) => {
       <div className="text-3xl text-light flex justify-center items-center my-auto">Loading...</div>
     )
   }
-
-  const { setThemeName } = useTheme()
 
   const handleSelect = (item: Countries) => {
     setSelectedId(item.id)

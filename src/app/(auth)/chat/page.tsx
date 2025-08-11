@@ -74,7 +74,7 @@ export default function Chat() {
     }
   }, [currentUserId, selectedUser])
 
-  // realtime 
+  // realtime
   useEffect(() => {
     if (!currentUserId) return
 
@@ -158,15 +158,16 @@ export default function Chat() {
               .map(user => (
                 <li
                   key={user.id}
-                  className={`p-2 cursor-pointer hover:bg-gray-200 ${selectedUser?.id === user.id ? 'bg-gray-300 font-semibold' : ''}`}
+                  className={`p-2 cursor-pointer hover:bg-gray-200 ${
+                    selectedUser?.id === user.id ? 'bg-gray-300 font-semibold' : ''
+                  }`}
                   onClick={() => onSelectUser(user)}
                 >
-                  {user.full_name ?? user.id}
+                  {user.full_name ? user.full_name.split('@')[0] : user.id}
                 </li>
               ))}
           </ul>
         </div>
-
         <div
           className={`md:flex-1 md:flex md:flex-col bg-transparent  md:rounded-lg  ${showChat ? 'block' : 'hidden'} md:block`}
         >
@@ -184,14 +185,14 @@ export default function Chat() {
           </div>
 
           {!selectedUser && (
-            <div className="md:flex hidden text-dark text-xl h-full w-full justify-center items-center">
+            <div className="md:flex hidden text-light text-xl h-110 w-full justify-center items-center">
               Select a user to start a conversation
             </div>
           )}
 
           {selectedUser && (
             <>
-              <div className="flex-1 max-h-150 min-h-100 h-full overflow-y-auto border p-2 rounded mb-4 bg-dark-hover">
+              <div className="flex-1 max-h-110 h-120 overflow-y-auto border p-2 rounded mb-4 bg-dark-hover">
                 {messages.map(msg => (
                   <div
                     key={msg.id}

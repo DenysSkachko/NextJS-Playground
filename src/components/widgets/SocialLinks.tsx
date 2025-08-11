@@ -2,13 +2,7 @@
 
 import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import {
-  FaInstagram,
-  FaTelegramPlane,
-  FaGithub,
-  FaLinkedin,
-  FaDiscord,
-} from 'react-icons/fa'
+import { FaInstagram, FaTelegramPlane, FaGithub, FaLinkedin, FaDiscord } from 'react-icons/fa'
 import { SiGmail } from 'react-icons/si'
 import { BsTwitter } from 'react-icons/bs'
 
@@ -39,7 +33,7 @@ const itemVariants = {
   visible: { opacity: 1, y: 0 },
 }
 
-const SocialLinks = React.forwardRef((props) => {
+const SocialLinks = React.forwardRef((props, ref) => {
   return (
     <motion.div
       className="flex flex-wrap max-w-[200px] justify-center mx-auto sm:max-w-full gap-6 mt-4"

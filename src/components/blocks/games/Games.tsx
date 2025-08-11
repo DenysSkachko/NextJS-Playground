@@ -83,14 +83,14 @@ const Games = () => {
           )
         })}
 
-        <AnimatePresence>
+        {/* <AnimatePresence>
           {activeGame === 'Dota2' && (
             <DotaModal isOpen={true} onClose={() => setActiveGame(null)} />
           )}
           {activeGame === 'Hearthstone' && (
             <HSModal isOpen={true} onClose={() => setActiveGame(null)} />
           )}
-        </AnimatePresence>
+        </AnimatePresence> */}
       </div>
     </>
   )

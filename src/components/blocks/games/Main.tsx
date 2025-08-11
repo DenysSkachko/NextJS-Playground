@@ -59,7 +59,7 @@ const Main = () => {
   }
   return (
     <>
-      <div className="flex flex-col md:flex-row h-full py-10 gap-4 justify-center items-center border border-accent">
+      <div className="flex flex-col md:flex-row h-full pt-10 gap-4 justify-center items-center border border-accent">
         {/* <div className=" relative w-[200px] h-[200px] overflow-hidden rounded-xl">
           <Image
             src="/avatar.png"
@@ -71,8 +71,8 @@ const Main = () => {
           />
         </div> */}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 justify-center">
-          <SmallCards label="First Name" value={profile.first_name} />
+        <div className="flex flex-wrap w-full justify-center">
+          <SmallCards label="First Name" value={profile.first_name} /> 
           <SmallCards label="Last Name" value={profile.last_name} />
           <SmallCards label="Middle Name" value={profile.middle_name} />
           <SmallCards label="Country" value={profile.country} icon={ua} />
