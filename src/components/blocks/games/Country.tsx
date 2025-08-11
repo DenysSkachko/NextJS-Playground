@@ -4,7 +4,6 @@ import React, { useState, useEffect, useRef, useMemo } from 'react'
 import { supabase } from '@/lib/supabase'
 import CountryCard from '@/components/ui/CountryCard'
 import SectionTitle from '@/components/ui/SectionTitle'
-import { setTheme } from '@/utils/setTheme'
 import { themes } from '@/themes/themes'
 import { useTheme } from '@/context/ThemeContext'
 
@@ -14,6 +13,9 @@ type Countries = {
   id: string
   cities: string
 }
+
+const normalizeThemeKey = (s: string) =>
+  s.trim().toLowerCase().replace(/\s+/g, '-')
 
 const Country = ({ onLoaded }: { onLoaded: () => void }) => {
   const [country, setCountry] = useState<Countries[]>([])
@@ -31,36 +33,46 @@ const Country = ({ onLoaded }: { onLoaded: () => void }) => {
 
       if (error) {
         console.error('error', error)
-      } else {
-        setCountry(data || [])
         onLoaded()
+        return
+      }
 
-        const savedId = localStorage.getItem('selectedCountryId')
-        if (savedId && data) {
-          const found = data.find(c => c.id === savedId)
-          if (found) {
-            setSelectedId(found.id)
-            const themeKey = found.name.toLowerCase()
-            const theme = themes[themeKey] || themes.default
+      setCountry(data || [])
+      onLoaded()
+
+      const savedTheme = localStorage.getItem('themeName')
+      const savedId = localStorage.getItem('selectedCountryId')
+
+      if (savedId && data) {
+        const found = data.find((c) => c.id === savedId)
+        if (found) {
+          setSelectedId(found.id)
+          if (!savedTheme) {
+            const themeKey = normalizeThemeKey(found.name)
             setThemeName(themeKey)
           }
         }
       }
     }
+
     fetchCountry()
-  }, [onLoaded])
+  }, [onLoaded, setThemeName])
 
   const memoizedCountries = useMemo(() => country, [country])
 
   if (!country.length) {
     return (
-      <div className="text-3xl text-light flex justify-center items-center my-auto">Loading...</div>
+      <div className="text-3xl text-light flex justify-center items-center my-auto">
+        Loading...
+      </div>
     )
   }
 
   const handleSelect = (item: Countries) => {
     setSelectedId(item.id)
-    const themeKey = item.name.toLowerCase()
+    localStorage.setItem('selectedCountryId', item.id)
+
+    const themeKey = normalizeThemeKey(item.name)
     setThemeName(themeKey)
   }
 
@@ -68,7 +80,7 @@ const Country = ({ onLoaded }: { onLoaded: () => void }) => {
     <>
       <SectionTitle>Countries I have visited</SectionTitle>
       <div className="flex flex-wrap gap-4 justify-center sm:justify-start">
-        {memoizedCountries.map(item => (
+        {memoizedCountries.map((item) => (
           <CountryCard
             key={item.id}
             item={item}

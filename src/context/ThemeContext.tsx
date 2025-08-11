@@ -34,6 +34,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const resetTheme = () => {
     setThemeNameState('default')
     localStorage.removeItem('themeName')
+    localStorage.removeItem('selectedCountryId')
     setTheme(themes.default)
   }
 

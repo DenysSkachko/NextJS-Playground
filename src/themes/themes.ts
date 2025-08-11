@@ -1,8 +1,8 @@
 export const themes: Record<string, Record<string, string>> = {
   default: {
-    '--color-dark': '#2b2d42',
-    '--color-dark-hover': '#13131b',
-    '--color-alt': '#8d99ae',
+    '--color-dark': '#1A1A1A',
+    '--color-dark-hover': '#262626',
+    '--color-alt': '#4D4D4D',
     '--color-light': '#edf2f4',
     '--color-light-hover': '#e0e2e2',
     '--color-accent': '#ef233c',

@@ -56,7 +56,7 @@ const Device = () => {
         </div>
 
         <div className="flex-1 flex flex-col bg-dark border border-accent divide-y divide-accent rounded-b-lg mx-auto w-full">
-          <h2 className="bg-accent text-light text-4xl w-full text-right">goal to upgrade</h2>
+          <h2 className="bg-accent text-dark text-4xl w-full text-right">goal to upgrade</h2>
           {upgradeDevice.map((item, index) => (
             <div
               key={item.id}

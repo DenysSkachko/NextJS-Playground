@@ -42,10 +42,10 @@ export default function ContactPage() {
   }, [currentCharIndex, currentParagraph, typedTexts])
 
   return (
-    <div className="flex flex-col xl:flex-row h-full gap-15">
+    <div className="flex flex-col xl:flex-row h-full gap-10">
       <div className="flex-1 rounded-2xl text-light relative bg-accent flex flex-col px-4 lg:px-10 py-4 pb-15 lg:py-5 overflow-hidden">
         <motion.h2
-          className="font-mickey text-center py-1 text-3xl uppercase text-light bg-dark tracking-[.2em] rounded-t-lg"
+          className="font-mickey text-center py-1 text-3xl uppercase text-accent bg-dark tracking-[.2em] rounded-t-lg"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.6 }}
@@ -53,7 +53,7 @@ export default function ContactPage() {
           Contact me
         </motion.h2>
 
-        <div className="px-4 pt-2 lg:py-5 lg:px-10 bg-light/50 text-dark-hover">
+        <div className="px-4 pt-2 lg:py-5 lg:px-10  text-dark-hover">
           {paragraphs.map((_, index) => (
             <motion.p
               key={index}
@@ -75,7 +75,7 @@ export default function ContactPage() {
         </Link>
       </div>
 
-      <div className="flex flex-col mx-auto justify-center w-full xl:w-100 gap-5">
+      <div className="flex flex-col mx-auto   justify-end w-full  xl:w-100 gap-5">
         <motion.div
           initial={{ opacity: 0, y: 20, scale: 1.5, x: 100 }}
           animate={{ opacity: 1, y: 0, scale: 1, x: 0 }}

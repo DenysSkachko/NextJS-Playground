@@ -37,11 +37,11 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
   return (
     <ThemeProvider>
       <BackgroundProvider>
-        <main className="flex min-h-screen w-screen items-center justify-center px-0 sm:px-10 pt-30 sm:pb-10">
-          <div className="relative z-10 flex h-full w-full sm:rounded-4xl bg-alt shadow-xl accent p-4 sm:p-10 pt-15 sm:pt-25 min-h-[750px] 2xl:w-[1350px]">
+        <main className="flex min-h-screen w-screen items-center justify-center px-0 sm:px-10 pt-30 pb-5">
+          <div className="relative z-10 flex h-full w-full sm:rounded-[28px] bg-alt shadow-xl accent p-4 sm:p-1 min-h-[700px] 2xl:w-[1350px] ">
             <Header />
 
-            <div className="relative w-full rounded-xl sm:rounded-3xl bg-dark px-4 sm:px-10 py-8">
+            <div className="relative w-full rounded-xl sm:rounded-3xl bg-dark px-4 sm:px-10 pb-4 pt-23 sm:pr-22 ">
               {children}
             </div>
 

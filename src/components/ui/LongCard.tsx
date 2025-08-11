@@ -43,7 +43,7 @@ const LongCard = ({ title, image, size = 150 }: LongProps) => {
             sizes="(max-width: 640px) 100vw, 120px"
             className="object-cover z-10 hover:scale-125 transition-all duration-300 pt-6"
           />
-          <p className="text-white z-20 text-md absolute top-0 left-0 bg-accent w-full px-1">
+          <p className="text-dark z-20 text-md absolute top-0 left-0 bg-accent w-full px-1">
             {title}
           </p>
         </div>

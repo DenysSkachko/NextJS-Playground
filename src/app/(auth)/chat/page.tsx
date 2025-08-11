@@ -152,14 +152,14 @@ export default function Chat() {
         <div className={`md:w-64 md:overflow-y-auto ${showChat ? 'hidden' : 'block'} md:block`}>
           <h2 className="bg-accent text-center text-light text-lg rounded-t-lg">Users</h2>
           {users.filter(u => u.id !== currentUserId).length === 0 && <div>Пользователей нет</div>}
-          <ul className="bg-alt">
+          <ul className="bg-light">
             {users
               .filter(user => user.id !== currentUserId)
               .map(user => (
                 <li
                   key={user.id}
-                  className={`p-2 cursor-pointer hover:bg-gray-200 ${
-                    selectedUser?.id === user.id ? 'bg-gray-300 font-semibold' : ''
+                  className={`p-2 cursor-pointer hover:bg-dark-hover hover:text-light-hover ${
+                    selectedUser?.id === user.id ? 'bg-dark-hover text-light pointer-events-none' : ''
                   }`}
                   onClick={() => onSelectUser(user)}
                 >
@@ -175,7 +175,7 @@ export default function Chat() {
             <button
               onClick={onBack}
               className="text-light bg-accent px-4 py-2 rounded-xl font-semibold mr-4"
-              aria-label="Назад к списку пользователей"
+              aria-label=""
             >
               Назад
             </button>
@@ -192,7 +192,7 @@ export default function Chat() {
 
           {selectedUser && (
             <>
-              <div className="flex-1 max-h-110 h-120 overflow-y-auto border p-2 rounded mb-4 bg-dark-hover">
+              <div className="flex-1 max-h-110 h-120 overflow-y-auto  p-2 rounded mb-4 bg-dark-hover">
                 {messages.map(msg => (
                   <div
                     key={msg.id}
