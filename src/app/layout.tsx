@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={poppins.className}>
       <body>
-        {/* <Preloader /> */}
+        <Preloader /> 
         {children}</body>
     </html>
   )
