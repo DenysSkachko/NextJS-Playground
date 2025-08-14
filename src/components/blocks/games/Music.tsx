@@ -13,6 +13,8 @@ const topArtists = [
 const winterArtists = [
   { id: 4, name: 'Vivaldi', image: '/music/winter.jpg', audio: '/music/winter.mp3' },
   { id: 5, name: 'Plach Yeremii', image: '/music/vona.jpg', audio: '/music/vona.mp3' },
+  { id: 6, name: 'Maneskin', image: '/music/slave.jpg', audio: '/music/slave.mp3' },
+  { id: 7, name: 'Eminem/Rihanna', image: '/music/monster.jpg', audio: '/music/monster.mp3' },
 ]
 
 const size = 150
@@ -55,7 +57,7 @@ export default function Music() {
     <>
       <SectionTitle>Favorite artists</SectionTitle>
       <div className="flex flex-wrap gap-4 mb-8">
-        {topArtists.map((artist) => (
+        {topArtists.map(artist => (
           <MusicCard
             key={artist.id}
             title={artist.name}
@@ -68,7 +70,7 @@ export default function Music() {
 
       <SectionTitle>Favorite singles</SectionTitle>
       <div className="flex flex-wrap gap-4 justify-center sm:justify-start">
-        {winterArtists.map((artist) => (
+        {winterArtists.map(artist => (
           <MusicCard
             key={artist.id}
             title={artist.name}

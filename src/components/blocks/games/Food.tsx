@@ -68,8 +68,8 @@ const Food = () => {
 }
 
 const FoodCard = ({ item }: { item: FoodItem }) => (
-  <div className="relative w-full sm:w-[150px] h-[100px] px-2 pt-5 pb-2 text-center text-light/50 rounded-lg group hover:scale-105 transition-all duration-300 cursor-pointer">
-    <h3 className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-dark-hover py-[1px] px-3 whitespace-nowrap rounded-sm z-10">
+  <div className="relative w-full sm:w-[150px] h-[100px] px-2 pt-5 pb-2 text-center  rounded-lg group hover:scale-105 transition-all duration-300 cursor-pointer">
+    <h3 className="absolute left-0 top-0 rounded-t-md bg-dark-hover w-full text-light py-[1px] px-3 whitespace-nowrap  z-10">
       {item.title}
     </h3>
     <Image
