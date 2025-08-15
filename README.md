@@ -14,10 +14,6 @@
 
 ![Chat Page](./public/screenshots/page_chat.png)
 
-### Contact Page
-
-![Favorite Contact](./public/screenshots/page_favorite_contact.png)
-
 ### Country Themes
 
 ![Favorite Country](./public/screenshots/page_favorite_country.png)
@@ -35,6 +31,12 @@
 ## About Page
 
 ![About Devices](./public/screenshots/page_about_devices.png)
+
+
+### Contact Page
+
+![Favorite Contact](./public/screenshots/page_favorite_contact.png)
+
 
 ---
 
