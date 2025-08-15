@@ -100,7 +100,7 @@ const Header = () => {
               >
                 <span className="text-3xl">{icon}</span>
                 <span
-                  className={`whitespace-nowrap overflow-hidden transition-opacity duration-300 ${'opacity-0 group-hover:opacity-100'}`}
+                  className="whitespace-nowrap overflow-hidden transition-opacity duration-300 opacity-0 group-hover:opacity-100"
                 >
                   {label}
                 </span>
